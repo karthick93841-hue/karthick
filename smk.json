@@ -1,0 +1,25 @@
+{
+    "user":[
+        {
+            "name":"the great khali",
+            "rank":10,
+            "fights":"53",
+            "chest":"53",
+            "biceps":"26",
+            "height":"7.5",
+            "weight":"408"
+        },
+        {
+            "name":"big show",
+            "rank":21,
+            "fights":"59",
+            "chest":"60",
+            "biceps":"32",
+            "height":"6",
+            "weight":"499"
+        }
+        
+
+]
+    }
+

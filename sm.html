@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+
+  <style>
+    /* ============================
+       CSS VARIABLES (Easy to edit!)
+    ============================ */
+    :root {
+      --bg-main: #0a0e1a;        /* Page background */
+      --bg-card: #111827;        /* Card/box background */
+      --bg-nav: #0d1321;         /* Navbar background */
+      --accent: #00d4ff;         /* Main accent color (cyan) */
+      --accent2: #7c3aed;        /* Secondary accent (purple) */
+      --text-main: #e2e8f0;      /* Main text */
+      --text-muted: #94a3b8;     /* Muted text */
+      --border: #1e293b;         /* Default border */
+      --border-hover: #00d4ff;   /* Hover border color */
+      --shadow-hover: 0 0 20px rgba(0, 212, 255, 0.3);
+    }
+
+    /* ============================
+       RESET & BASE
+    ============================ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ============================
+       NAVBAR
+    ============================ */
+    nav {
+      background-color: var(--bg-nav);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0 2rem;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 65px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    /* Underline hover effect on nav */
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -4px;
+      width: 0; height: 2px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hamburger for mobile */
+    .hamburger {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--accent);
+    }
+
+    /* ============================
+       HERO SECTION
+    ============================ */
+    #home {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      background: radial-gradient(ellipse at top, #0f1f3d 0%, var(--bg-main) 70%);
+    }
+
+    .hero-content {
+      max-width: 700px;
+    }
+
+    .hero-img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 25px rgba(0, 212, 255, 0.4);
+      margin-bottom: 1.5rem;
+      object-fit: cover;
+      background: var(--bg-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      margin: 0 auto 1.5rem;
+    }
+
+    .hero-greeting {
+      font-size: 1.1rem;
+      color: var(--accent);
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .hero-name {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #ffffff, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-role {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-role span {
+      color: var(--accent2);
+      font-weight: 600;
+    }
+
+    .hero-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto 2rem;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Buttons */
+    .btn {
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 2px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0a0e1a;
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--accent);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .btn-outline:hover {
+      background: var(--accent);
+      color: #0a0e1a;
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* Social icons */
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .social-icons a {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    .social-icons a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-3px);
+    }
+
+    /* ============================
+       SECTION STYLES (shared)
+    ============================ */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title span {
+      color: var(--accent);
+    }
+
+    .section-line {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      margin: 0 auto 3rem;
+      border-radius: 2px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    /* ============================
+       ABOUT SECTION
+    ============================ */
+    #about {
+      background-color: #0d1321;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .about-text p strong {
+      color: var(--accent);
+    }
+
+    .about-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .info-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      transition: all 0.3s;
+    }
+
+    .info-box:hover {
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-3px);
+    }
+
+    .info-box .label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .info-box .value {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-top: 2px;
+    }
+
+    /* Stats boxes */
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .stat-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-4px);
+    }
+
+    .stat-card .number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .stat-card .label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* ============================
+       SKILLS SECTION
+    ============================ */
+    #skills {
+      background: linear-gradient(180deg, var(--bg-main) 0%, #0d1a2e 100%);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill-category {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.8rem;
+      transition: all 0.3s;
+    }
+
+    .skill-category:hover {
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-5px);
+    }
+
+    .skill-category h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-item {
+      margin-bottom: 1.2rem;
+    }
+
+    .skill-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      margin-bottom: 6px;
+      color: var(--text-muted);
+    }
+
+    .skill-info span:last-child {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Progress bar */
+    .progress-bar {
+      height: 7px;
+      background: var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      width: 0;
+      animation: fillBar 1.5s ease forwards;
+      animation-delay: 0.3s;
+    }
+
+    @keyframes fillBar {
+      from { width: 0; }
+      to { width: var(--fill); }
+    }
+
+    /* Tech tag chips */
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.5rem;
+    }
+
+    .tag {
+      background: rgba(0, 212, 255, 0.08);
+      border: 1px solid rgba(0, 212, 255, 0.25);
+      color: var(--accent);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .tag:hover {
+      background: var(--accent);
+      color: #0a0e1a;
+      box-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+    }
+
+    /* ============================
+       PROJECTS SECTION
+    ============================ */
+    #projects {
+      background-color: #0d1321;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .project-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-6px);
+    }
+
+    .project-img {
+      height: 180px;
+      background: linear-gradient(135deg, #0f2240, #1a0a3d);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-body {
+      padding: 1.5rem;
+    }
+
+    .project-body h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-body p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .project-links a {
+      font-size: 0.8rem;
+      padding: 6px 14px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.3s;
+    }
+
+    .project-links a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+    }
+
+    /* ============================
+       CONTACT SECTION
+    ============================ */
+    #contact {
+      background: linear-gradient(180deg, #0d1a2e 0%, var(--bg-main) 100%);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .contact-info h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .contact-info p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+      padding: 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      transition: all 0.3s;
+    }
+
+    .contact-item:hover {
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .contact-item .icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(0, 212, 255, 0.1);
+      border: 1px solid rgba(0, 212, 255, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .contact-item .detail .label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .contact-item .detail .value {
+      font-size: 0.9rem;
+      color: var(--text-main);
+      margin-top: 2px;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      background: var(--bg-main);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-main);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 12px rgba(0, 212, 255, 0.2);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .btn-full {
+      width: 100%;
+    }
+
+    /* ============================
+       FOOTER
+    ============================ */
+    footer {
+      background: var(--bg-nav);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    footer span {
+      color: var(--accent);
+    }
+
+    /* ============================
+       SCROLL TO TOP BUTTON
+    ============================ */
+    #scrollTop {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 44px;
+      height: 44px;
+      background: var(--accent);
+      color: #0a0e1a;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+      transition: all 0.3s;
+      z-index: 99;
+    }
+
+    #scrollTop:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px rgba(0, 212, 255, 0.6);
+    }
+
+    #scrollTop.show {
+      display: flex;
+    }
+
+    /* ============================
+       RESPONSIVE - TABLET
+    ============================ */
+    @media (max-width: 900px) {
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-stats {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    /* ============================
+       RESPONSIVE - MOBILE
+    ============================ */
+    @media (max-width: 600px) {
+      /* Hamburger menu */
+      .hamburger {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        right: 0;
+        background: var(--bg-nav);
+        border-bottom: 1px solid var(--border);
+        padding: 1.5rem 2rem;
+        gap: 1.5rem;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .about-info {
+        grid-template-columns: 1fr;
+      }
+
+      .about-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 3.5rem 1.2rem;
+      }
+
+      .hero-name {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo">&lt;S.KARTHICK /&gt;</div>
+      <span class="hamburger" id="menuBtn"><i class="fas fa-bars"></i></span>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <section id="home">
+    <div class="hero-content">
+      <div class="hero_img">
+        <img style="width: 300px;height: 300px; border-radius: 50%;" src="./hero_img.jpeg" alt="">
+      </div>
+      <p class="hero-greeting">Hello, I'm</p>
+      <h1 class="hero-name">s.karthick</h1>
+      <p class="hero-role">A <span>Frontend Developer</span> &amp; UI Designer</p>
+      <p class="hero-desc">
+        I build clean, responsive websites and web applications that look great on every device.
+      </p>
+      <div class="btn-group">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#contact" class="btn btn-outline">Hire Me</a>
+      </div>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About <span>Me</span></h2>
+      <div class="section-line"></div>
+      <div class="about-grid">
+        <!-- Left: Text -->
+        <div class="about-text">
+          <p>Hi! I'm <strong>s,karthick</strong>, a passionate Frontend Developer based in Chennai, India. I love turning ideas into beautiful, functional web experiences.</p>
+          <p>I specialize in building modern, responsive websites using <strong>HTML, CSS, JavaScript</strong>, and popular frameworks. I'm always learning new things and improving my craft.</p>
+          <p>When I'm not coding, I enjoy exploring design trends, watching tech tutorials, and contributing to open source projects.</p>
+          <div class="about-info">
+            <div class="info-box">
+              <p class="label">Name</p>
+              <p class="value">s.karthick</p>
+            </div>
+            <div class="info-box">
+              <p class="label">Location</p>
+              <p class="value">Chennai, India</p>
+            </div>
+            <div class="info-box">
+              <p class="label">Email</p>
+              <p class="value">karthick93841@email.com</p>
+            </div>
+            <div class="info-box">
+              <p class="label">Status</p>
+              <p class="value" style="color:var(--accent)">Available ✅</p>
+            </div>
+          </div>
+        </div>
+        <!-- Right: Stats -->
+        <div class="about-stats">
+          <div class="stat-card">
+            <div class="number">1+</div>
+            <div class="label">Years Experience</div>
+          </div>
+          <div class="stat-card">
+            <div class="number">10+</div>
+            <div class="label">Projects Done</div>
+          </div>
+          <div class="stat-card">
+            <div class="number">5+</div>
+            <div class="label">Happy Clients</div>
+          </div>
+          <div class="stat-card">
+            <div class="number">5+</div>
+            <div class="label">Certifications</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SKILLS ===================== -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">My <span>Skills</span></h2>
+      <div class="section-line"></div>
+      <div class="skills-grid">
+
+        <!-- Frontend Skills -->
+        <div class="skill-category">
+          <h3><i class="fas fa-code"></i> Frontend</h3>
+          <div class="skill-item">
+            <div class="skill-info"><span>HTML5</span><span>95%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="--fill:95%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>CSS3</span><span>90%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="--fill:90%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>JavaScript</span><span>80%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="--fill:80%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>React JS</span><span>70%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="--fill:70%"></div></div>
+          </div>
+        </div>
+
+        <!-- Tools -->
+        <div class="skill-category">
+          <h3><i class="fas fa-tools"></i> Tools & Platforms</h3>
+          <div class="tech-tags">
+            <span class="tag">Git</span>
+            <span class="tag">GitHub</span>
+            <span class="tag">VS Code</span>
+            <span class="tag">Figma</span>
+            <span class="tag">Postman</span>
+            <span class="tag">Netlify</span>
+            <span class="tag">Vercel</span>
+            <span class="tag">npm</span>
+          </div>
+        </div>
+
+        <!-- Other Skills -->
+        <div class="skill-category">
+          <h3><i class="fas fa-layer-group"></i> Other Skills</h3>
+          <div class="tech-tags">
+            <span class="tag">Responsive Design</span>
+            <span class="tag">REST APIs</span>
+            <span class="tag">Bootstrap</span>
+            <span class="tag">Tailwind CSS</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Python</span>
+            <span class="tag">Problem Solving</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROJECTS ===================== -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">My <span>Projects</span></h2>
+      <div class="section-line"></div>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div class="project-img">🛒</div>
+          <div class="project-body">
+            <h3>E-Commerce Website</h3>
+            <p>A fully responsive online shopping site with cart functionality, product filtering, and modern UI.</p>
+            <div class="tech-tags" style="margin-bottom:1rem">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+            </div>
+            <div class="project-links">
+              <a href="#"><i class="fas fa-eye"></i> Live Demo</a>
+              <a href="#"><i class="fab fa-github"></i> Code</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-img">☁️</div>
+          <div class="project-body">
+            <h3>Weather App</h3>
+            <p>Real-time weather application using OpenWeather API with location search and 5-day forecast.</p>
+            <div class="tech-tags" style="margin-bottom:1rem">
+              <span class="tag">JavaScript</span>
+              <span class="tag">API</span>
+              <span class="tag">CSS</span>
+            </div>
+            <div class="project-links">
+              <a href="#"><i class="fas fa-eye"></i> Live Demo</a>
+              <a href="#"><i class="fab fa-github"></i> Code</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-img">✅</div>
+          <div class="project-body">
+            <h3>Todo App</h3>
+            <p>A clean task management app with local storage, drag & drop, and priority filters.</p>
+            <div class="tech-tags" style="margin-bottom:1rem">
+              <span class="tag">React</span>
+              <span class="tag">CSS</span>
+              <span class="tag">localStorage</span>
+            </div>
+            <div class="project-links">
+              <a href="#"><i class="fas fa-eye"></i> Live Demo</a>
+              <a href="#"><i class="fab fa-github"></i> Code</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact <span>Me</span></h2>
+      <div class="section-line"></div>
+      <div class="contact-grid">
+
+        <!-- Contact Info -->
+        <div class="contact-info">
+          <h3>Let's Work Together!</h3>
+          <p>Have a project in mind or just want to say hi? Feel free to reach out. I'm always open to new opportunities.</p>
+          <div class="contact-item">
+            <div class="icon"><i class="fas fa-envelope"></i></div>
+            <div class="detail">
+              <p class="label">Email</p>
+              <p class="value">karthick@email.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="icon"><i class="fas fa-phone"></i></div>
+            <div class="detail">
+              <p class="label">Phone</p>
+              <p class="value">+91 93841 49376</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="detail">
+              <p class="label">Location</p>
+              <p class="value">Chennai, Tamil Nadu</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form">
+          <div class="form-group">
+            <label>karthick</label>
+            <input type="text" placeholder="Enter your name" />
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="Enter your email" />
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <input type="text" placeholder="What's this about?" />
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Write your message here..."></textarea>
+          </div>
+          <button class="btn btn-primary btn-full">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <p>Designed & Built with <span>❤️</span> by <span>s.karthicl</span> &copy; 2025</p>
+  </footer>
+
+  <!-- Scroll To Top Button -->
+  <button id="scrollTop" title="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- ===================== JAVASCRIPT ===================== -->
+  <script>
+    // --- Mobile Menu Toggle ---
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    // Close menu when a link is clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+      });
+    });
+
+    // --- Scroll To Top Button ---
+    const scrollBtn = document.getElementById('scrollTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        scrollBtn.classList.add('show');
+      } else {
+        scrollBtn.classList.remove('show');
+      }
+    });
+
+    scrollBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // --- Active nav link on scroll ---
+    const sections = document.querySelectorAll('section');
+    const navItems = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        if (window.scrollY >= section.offsetTop - 100) {
+          current = section.getAttribute('id');
+        }
+      });
+      navItems.forEach(link => {
+        link.style.color = '';
+        if (link.getAttribute('href') === '#' + current) {
+          link.style.color = 'var(--accent)';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
