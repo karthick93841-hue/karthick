@@ -785,8 +785,6 @@
   </style>
 </head>
 <body>
-
-  <!-- ===================== NAVBAR ===================== -->
   <nav>
     <div class="nav-container">
       <div class="logo">&lt;S.KARTHICK /&gt;</div>
@@ -826,13 +824,11 @@
     </div>
   </section>
 
-  <!-- ===================== ABOUT ===================== -->
   <section id="about">
     <div class="container">
       <h2 class="section-title">About <span>Me</span></h2>
       <div class="section-line"></div>
       <div class="about-grid">
-        <!-- Left: Text -->
         <div class="about-text">
           <p>Hi! I'm <strong>s,karthick</strong>, a passionate Frontend Developer based in Chennai, India. I love turning ideas into beautiful, functional web experiences.</p>
           <p>I specialize in building modern, responsive websites using <strong>HTML, CSS, JavaScript</strong>, and popular frameworks. I'm always learning new things and improving my craft.</p>
@@ -856,7 +852,6 @@
             </div>
           </div>
         </div>
-        <!-- Right: Stats -->
         <div class="about-stats">
           <div class="stat-card">
             <div class="number">1+</div>
@@ -878,15 +873,11 @@
       </div>
     </div>
   </section>
-
-  <!-- ===================== SKILLS ===================== -->
   <section id="skills">
     <div class="container">
       <h2 class="section-title">My <span>Skills</span></h2>
       <div class="section-line"></div>
       <div class="skills-grid">
-
-        <!-- Frontend Skills -->
         <div class="skill-category">
           <h3><i class="fas fa-code"></i> Frontend</h3>
           <div class="skill-item">
@@ -939,15 +930,12 @@
       </div>
     </div>
   </section>
-
-  <!-- ===================== PROJECTS ===================== -->
   <section id="projects">
     <div class="container">
       <h2 class="section-title">My <span>Projects</span></h2>
       <div class="section-line"></div>
       <div class="projects-grid">
-
-        <div class="project-card">
+   <div class="project-card">
           <div class="project-img">🛒</div>
           <div class="project-body">
             <h3>E-Commerce Website</h3>
@@ -997,19 +985,14 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
-
-  <!-- ===================== CONTACT ===================== -->
   <section id="contact">
     <div class="container">
       <h2 class="section-title">Contact <span>Me</span></h2>
       <div class="section-line"></div>
       <div class="contact-grid">
-
-        <!-- Contact Info -->
         <div class="contact-info">
           <h3>Let's Work Together!</h3>
           <p>Have a project in mind or just want to say hi? Feel free to reach out. I'm always open to new opportunities.</p>
@@ -1017,7 +1000,7 @@
             <div class="icon"><i class="fas fa-envelope"></i></div>
             <div class="detail">
               <p class="label">Email</p>
-              <p class="value">karthick@email.com</p>
+              <p class="value">karthick93841@gmail.com</p>
             </div>
           </div>
           <div class="contact-item">
@@ -1035,8 +1018,6 @@
             </div>
           </div>
         </div>
-
-        <!-- Contact Form -->
         <div class="contact-form">
           <div class="form-group">
             <label>karthick</label>
@@ -1062,35 +1043,23 @@
       </div>
     </div>
   </section>
-
-  <!-- ===================== FOOTER ===================== -->
   <footer>
-    <p>Designed & Built with <span>❤️</span> by <span>s.karthicl</span> &copy; 2025</p>
+    <p>Designed & Built with <span>❤️</span> by <span>s.karthick</span> &copy; 2025</p>
   </footer>
-
-  <!-- Scroll To Top Button -->
   <button id="scrollTop" title="Back to top">
     <i class="fas fa-arrow-up"></i>
   </button>
-
-  <!-- ===================== JAVASCRIPT ===================== -->
-  <script>
-    // --- Mobile Menu Toggle ---
-    const menuBtn = document.getElementById('menuBtn');
+ <script>
+   const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
-
     menuBtn.addEventListener('click', () => {
       navLinks.classList.toggle('open');
     });
-
-    // Close menu when a link is clicked
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('open');
       });
     });
-
-    // --- Scroll To Top Button ---
     const scrollBtn = document.getElementById('scrollTop');
 
     window.addEventListener('scroll', () => {
@@ -1104,11 +1073,8 @@
     scrollBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-
-    // --- Active nav link on scroll ---
     const sections = document.querySelectorAll('section');
     const navItems = document.querySelectorAll('.nav-links a');
-
     window.addEventListener('scroll', () => {
       let current = '';
       sections.forEach(section => {
